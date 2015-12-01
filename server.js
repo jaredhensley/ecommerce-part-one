@@ -7,7 +7,11 @@ var mongojs = require('mongojs');
 // server instance
 var app = express();
 var db = mongojs('store', ['products'])
+
+// middleware
 app.use(bodyParser.json());
+app.use(cors());
+app.use(express.static(__dirname + '/public'));
 
 // end points
 app.get('/products', function (req, res) {
