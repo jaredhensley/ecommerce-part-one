@@ -23,13 +23,22 @@
   </form>
 </div>-->
 
+<select name="" id="" ng-model="selected_product" ng-options="product.name for product in products">
+  <option value="">select a product</option>
+</select>
 
+<h2>Add a new product</h2>
+<form ng-submit="addProduct(newProduct)">
+  <input type="text" placeholder="enter name" ng-model="newProduct.name">
+</form>
+
+<h2>Existing Products</h2>
 <div id="admin-panel-right" ng-repeat="product in products">
   product ID: {{product._id}}
   <br> product Name: {{product.name}}
   <br> edit name:
   <form ng-submit="editProduct(product)">
-    <input type="text" ng-model="product.newName">
+    <input type="text" ng-model="product.newName" placeholder="enter a new name">
   </form>
   <hr>
 </div>

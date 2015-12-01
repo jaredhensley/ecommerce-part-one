@@ -13,6 +13,20 @@ angular.module('myApp').service('mainService', function ($http) {
     });
   };
 
+  this.addProduct = function (product) {
+    return $http({
+      method: 'POST',
+      url: 'http://localhost:8080/products',
+      data: {
+        name: product.name
+      }
+    }).then(function (res) {
+      console.log(res);
+      return res;
+    })
+
+  }
+
   this.editProduct = function (product) {
     console.log(product);
     return $http({
