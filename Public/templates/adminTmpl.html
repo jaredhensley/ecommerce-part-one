@@ -27,6 +27,11 @@
   <option value="">select a product</option>
 </select>
 
+selected product: {{selected_product}}
+<br>
+<form>
+  <input type="text" ng-model="selected_product.name">
+</form>
 <h2>Add a new product</h2>
 <form ng-submit="addProduct(newProduct)">
   <input type="text" placeholder="enter name" ng-model="newProduct.name">
