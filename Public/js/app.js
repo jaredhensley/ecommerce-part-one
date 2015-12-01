@@ -15,6 +15,6 @@ angular.module('myApp', ['ui.router'])
     .state('admin', {
       url: '/admin',
       templateUrl: '../templates/adminTmpl.html',
-      controller: 'adminCtrl'
+      controller: 'mainCtrl'
     });
 });

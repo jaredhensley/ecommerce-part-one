@@ -1,3 +1,11 @@
 <div>
-  HOME TMPL
+  <h1> HOME TMPL</h1>
+  <br>
+  <div ng-repeat="product in products">
+    product ID: {{product["_id"]}}
+    <br> product Name: {{product.name}}
+    <br>
+    <hr>
+  </div>
+
 </div>

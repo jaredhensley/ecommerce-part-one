@@ -1,3 +1,26 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
-  background-color: blue;
+  font-family: 'Open Sans';
+  background-color: cornflowerblue;
+  color: white;
+}
+
+
+/*#admin-panel-left {
+  width: 50%;
+  float: left;
+  border-right: 1px solid white;
+}*/
+
+#admin-panel-right {
+  margin-top: 21.44px;
 }

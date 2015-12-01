@@ -1,3 +1,35 @@
-<div>
-  ADMIN TMPL
+<!--<div id='admin-panel-left'>
+  <h1>ADMIN TMPL</h1>
+
+
+
+  <h2>Add Product</h2>
+  <form ng-submit="">
+    name by ID:
+    <input type="text" ng-model="addedProduct">
+  </form>
+
+  <h2>Delete Product</h2>
+  <form ng-submit="">
+    delete by ID:
+    <input type="text" ng-model="deletedProduct">
+  </form>
+
+  <h2>Edit Product</h2>
+  <form ng-submit="editProduct(editedProduct)">
+    edit by ID:
+    <input type="text" ng-model="editedProduct">
+    <input type="text">
+  </form>
+</div>-->
+
+
+<div id="admin-panel-right" ng-repeat="product in products">
+  product ID: {{product._id}}
+  <br> product Name: {{product.name}}
+  <br> edit name:
+  <form ng-submit="editProduct(product)">
+    <input type="text" ng-model="product.newName">
+  </form>
+  <hr>
 </div>
