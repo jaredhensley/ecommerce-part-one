@@ -2,11 +2,13 @@
 var express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
-var mongojs = require('mongojs');
+var mongoose = require('mongoose');
+var Product = require('./serverAssets/Models/product');
+/*var mongojs = require('mongojs');*/
 
 // server instance
 var app = express();
-var db = mongojs('store', ['products'])
+/*var db = mongojs('store', ['products'])*/
 
 // middleware
 app.use(bodyParser.json());
@@ -15,59 +17,60 @@ app.use(express.static(__dirname + '/public'));
 
 // end points
 app.get('/products', function (req, res) {
-  db.products.find({}, function (err, results) {
-    if (!err) {
-      res.status(200).send(results);
-    }
+  Product.find(req.query).exec().then(function (products) {
+    return res.status(200).json(products);
   });
 });
 
 app.get('/products/:id', function (req, res) {
-  db.products.find({
-    _id: mongojs.ObjectId(req.params.id)
-  }, function (err, results) {
-    if (!err) {
-      res.status(200).send(results);
-    }
+  Product.findOne({
+    _id: req.params.id
+  }).exec().then(function (products) {
+    return res.status(200).json(products);
   });
 });
 
 app.post('/products', function (req, res) {
-  console.log(11111, req.body)
-  db.products.insert(req.body, function (err, results) {
+  var product = new Product(req.body);
+  product.save().then(function (err, result) {
     if (!err) {
-      console.log(22222, results);
-      res.status(201).end();
+      return res.status(201).end();
     } else {
-      res.status(500).send(err);
+      console.log(err);
+      res.json(err);
     }
-  });
+  })
 });
 
 app.put('/products/:id', function (req, res) {
-  db.products.update({
-    _id: mongojs.ObjectId(req.params.id)
-  }, {
-    $set: req.body
-  }, function (err, results) {
+  Product.update({
+    _id: req.params.id
+  }, req.body).then(function (err, result) {
     if (!err) {
-      console.log(results);
-      res.status(201).end();
+      return res.status(201).end();
     } else {
       console.log(err);
+      res.json(err);
     }
-  });
+  })
 });
 
 app.delete('/products/:id', function (req, res) {
-  db.products.remove({
-    _id: mongojs.ObjectId(req.params.id)
-  }, function (err, results) {
+  Product.remove({
+    _id: req.params.id
+  }).then(function (err, result) {
     if (!err) {
-      console.log(results);
-      res.status(200).end();
+      return res.status(201).end();
+    } else {
+      console.log(err);
+      res.json(err);
     }
   });
 });
 
 app.listen(8080);
+
+mongoose.connect('mongodb://localhost/store', function (err) {
+  console.log(err);
+
+});

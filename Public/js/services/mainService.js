@@ -14,12 +14,16 @@ angular.module('myApp').service('mainService', function ($http) {
   };
 
   this.addProduct = function (product) {
+    console.log('test');
+    console.log(product);
     return $http({
       method: 'POST',
       url: 'http://localhost:8080/products',
       data: {
-        name: product.name,
-        quantity: product.quantity
+        Title: product.Title,
+        Quantity: product.Quantity,
+        Description: product.Description,
+        Price: product.Price
       }
     }).then(function (res) {
       console.log(res);
@@ -34,8 +38,10 @@ angular.module('myApp').service('mainService', function ($http) {
       method: 'PUT',
       url: 'http://localhost:8080/products/' + product._id,
       data: {
-        name: product.name,
-        quantity: product.quantity
+        Title: product.Title,
+        Quantity: product.Quantity,
+        Description: product.Description,
+        Price: product.Price
       }
     }).then(function (res) {
       console.log(res);

@@ -1,25 +1,39 @@
 <div id="admin-panel-left">
   <h2>Choose a product to edit</h2>
   <br> select product:
-  <select name="" id="" ng-model="selected_product" ng-options="product.name for product in products">
+  <br>
+  <select name="" id="" ng-model="selected_product" ng-options="product.Title for product in products">
     <option value="">select a product</option>
   </select>
   <br>
 
   <form>
-    edit name:
-    <input type="text" ng-model="selected_product.name">
-    <br> edit quantity:
-    <input type="text" ng-model="selected_product.quantity">
+    <!--edit name:-->
+    <input type="text" ng-model="selected_product.Title" placeholder="edit name...">
+    <br>
+    <!--edit quantity:-->
+    <input type="text" ng-model="selected_product.Quantity" placeholder="edit quantity...">
+    <br>
+    <!--edit description:-->
+    <textarea name="" id="" cols="20" rows="5" ng-model="selected_product.Description" placeholder="edit description..."></textarea>
+    <br>
+    <!--edit price:-->
+    <input type="text" ng-model="selected_product.Price" placeholder="edit price...">
     <button type="submit" ng-click="editProduct(selected_product)">Change</button>
   </form>
-  {{selected_product}}
   <h2>Add a new product</h2>
   <form>
-    product name:
-    <input type="text" placeholder="enter name" ng-model="newProduct.name">
-    <br> quantity:
-    <input type="text" placeholder="how many?" ng-model="newProduct.quantity">
+    <!--product name:-->
+    <input type="text" placeholder="enter name" ng-model="newProduct.Title">
+    <br>
+    <!--quantity:-->
+    <input type="text" placeholder="how many?" ng-model="newProduct.Quantity">
+    <br>
+    <!--description:-->
+    <textarea type="text" placeholder="enter a description" ng-model="newProduct.Description"></textarea>
+    <br>
+    <!--price:-->
+    <input type="text" placeholder="how many?" ng-model="newProduct.Price">
     <button type="submit" ng-click="addProduct(newProduct)">Add</button>
   </form>
 </div>
@@ -28,8 +42,10 @@
   <h2>Existing Products</h2>
   <div ng-repeat="product in products">
     product ID: {{product._id}}
-    <br> product Name: {{product.name}}
-    <br> quantity: {{product.quantity}}
+    <br> product Name: {{product.Title}}
+    <br> description: {{product.Description}}
+    <br> price: {{product.Price}}
+    <br> quantity: {{product.Quantity}}
     <button ng-click="deleteProduct(product)">Delete</button>
     <!--below-->
     <hr>
