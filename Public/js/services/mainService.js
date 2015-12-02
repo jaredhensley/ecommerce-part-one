@@ -33,7 +33,7 @@ angular.module('myApp').service('mainService', function ($http) {
       method: 'PUT',
       url: 'http://localhost:8080/products/' + product._id,
       data: {
-        name: product.newName
+        name: product.name
       }
     }).then(function (res) {
       console.log(res);

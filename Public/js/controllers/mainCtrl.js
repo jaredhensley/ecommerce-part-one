@@ -12,7 +12,6 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
       console.log(res);
       $scope.getProducts();
     });
-
   }
 
   $scope.editProduct = function (product) {
@@ -20,7 +19,6 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
       console.log(res);
       $scope.getProducts();
     });
-
   }
 
   $scope.getProducts();
