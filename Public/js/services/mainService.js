@@ -18,7 +18,8 @@ angular.module('myApp').service('mainService', function ($http) {
       method: 'POST',
       url: 'http://localhost:8080/products',
       data: {
-        name: product.name
+        name: product.name,
+        quantity: product.quantity
       }
     }).then(function (res) {
       console.log(res);
@@ -33,7 +34,8 @@ angular.module('myApp').service('mainService', function ($http) {
       method: 'PUT',
       url: 'http://localhost:8080/products/' + product._id,
       data: {
-        name: product.name
+        name: product.name,
+        quantity: product.quantity
       }
     }).then(function (res) {
       console.log(res);
@@ -42,10 +44,10 @@ angular.module('myApp').service('mainService', function ($http) {
 
   };
 
-  this.deleteProduct = function (productID) {
+  this.deleteProduct = function (product) {
     return $http({
       method: 'DELETE',
-      url: 'http://localhost:8080/products/' + productID
+      url: 'http://localhost:8080/products/' + product._id
     })
 
   };

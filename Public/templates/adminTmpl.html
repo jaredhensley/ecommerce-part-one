@@ -1,3 +1,42 @@
+<div id="admin-panel-left">
+  <h2>Choose a product to edit</h2>
+  <br> select product:
+  <select name="" id="" ng-model="selected_product" ng-options="product.name for product in products">
+    <option value="">select a product</option>
+  </select>
+  <br>
+
+  <form>
+    edit name:
+    <input type="text" ng-model="selected_product.name">
+    <br> edit quantity:
+    <input type="text" ng-model="selected_product.quantity">
+    <button type="submit" ng-click="editProduct(selected_product)">Change</button>
+  </form>
+  {{selected_product}}
+  <h2>Add a new product</h2>
+  <form>
+    product name:
+    <input type="text" placeholder="enter name" ng-model="newProduct.name">
+    <br> quantity:
+    <input type="text" placeholder="how many?" ng-model="newProduct.quantity">
+    <button type="submit" ng-click="addProduct(newProduct)">Add</button>
+  </form>
+</div>
+
+<div id="admin-panel-right">
+  <h2>Existing Products</h2>
+  <div ng-repeat="product in products">
+    product ID: {{product._id}}
+    <br> product Name: {{product.name}}
+    <br> quantity: {{product.quantity}}
+    <button ng-click="deleteProduct(product)">Delete</button>
+    <!--below-->
+    <hr>
+  </div>
+</div>
+
+
 <!--<div id='admin-panel-left'>
   <h1>ADMIN TMPL</h1>
 
@@ -24,32 +63,7 @@
 </div>-->
 
 
-<h2>Choose a product to edit</h2>
-<br> select product:
-<select name="" id="" ng-model="selected_product" ng-options="product.name for product in products">
-  <option value="">select a product</option>
-</select>
-
-{{selected_product}}
-<br>
-
-<form ng-submit="editProduct(selected_product)">
-  edit name:
-  <input type="text" ng-model="selected_product.name">
-</form>
-
-<h2>Add a new product</h2>
-<form ng-submit="addProduct(newProduct)">
-  <input type="text" placeholder="enter name" ng-model="newProduct.name">
-</form>
-
-<h2>Existing Products</h2>
-<div id="admin-panel-right" ng-repeat="product in products">
-  product ID: {{product._id}}
-  <br> product Name: {{product.name}}
-  <!--<br> edit name:
+<!--<br> edit name:
 <form ng-submit="editProduct(product)">
   <input type="text" ng-model="product.newName" placeholder="enter a new name">
 </form>-->
-  <hr>
-</div>
