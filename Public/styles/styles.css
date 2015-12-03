@@ -11,10 +11,10 @@ html {
 body {
   font-family: 'Open Sans';
   background-color: cornflowerblue;
-  color: white;
 }
 
-#admin-panel-left {
+
+/*#admin-panel-left {
   width: 50%;
   float: left;
 }
@@ -23,4 +23,13 @@ body {
   width: 50%;
   float: right;
   border-right: 1px solid white;
+}*/
+
+.well {
+  background-color: #cecece;
+  color: white;
+}
+
+.btn-danger {
+  margin-top: 20px;
 }

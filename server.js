@@ -4,11 +4,11 @@ var cors = require('cors');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var Product = require('./serverAssets/Models/product');
-/*var mongojs = require('mongojs');*/
+var userCtrl = require('./serverAssets/controllers/userCtrl');
+var cartCtrl = require('./serverAssets/controllers/cartCtrl');
 
 // server instance
 var app = express();
-/*var db = mongojs('store', ['products'])*/
 
 // middleware
 app.use(bodyParser.json());
@@ -67,6 +67,16 @@ app.delete('/products/:id', function (req, res) {
     }
   });
 });
+
+app.post('/users', userCtrl.addUser);
+app.get('/users/:username', userCtrl.getUser);
+app.put('/users/:id', userCtrl.updateUser);
+
+
+
+
+app.post('/cart/:id', cartCtrl.addCart);
+app.post('/cart/:id', cartCtrl.updateCart);
 
 app.listen(8080);
 
