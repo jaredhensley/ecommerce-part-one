@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 
 var Product = mongoose.model('Product', new mongoose.Schema({
-  title: {
+  Title: {
     type: String,
     unique: true,
     required: true,
     index: true,
   },
-  price: {
+  Price: {
     type: Number,
     required: true,
     min: 0
