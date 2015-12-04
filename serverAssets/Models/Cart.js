@@ -2,15 +2,17 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
   products: [{
-    type: String,
-    ref: 'Product'
+    product: {
+      type: String,
+      ref: 'Product'
+    },
+    qty: {
+      type: Number
+    }
   }],
   total: {
-    type: Number,
-    required: true
+    type: Number
   }
+})
 
-});
-
-
-module.exports = mongoose.model('Cart', schema);
+module.exports = mongoose.model('Cart', schema)
