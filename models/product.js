@@ -1,24 +1,17 @@
 var mongoose = require('mongoose');
 
 var Product = mongoose.model('Product', new mongoose.Schema({
-  Title: {
+  title: {
     type: String,
-    unique: true
-  },
-  Description: {
-    type: String,
-    required: true
-  },
-  Price: {
-    type: Number,
+    unique: true,
     required: true,
-    min: 0
+    index: true,
   },
-  Quantity: {
+  price: {
     type: Number,
     required: true,
     min: 0
   }
-}));
+}))
 
-module.exports = Product;
+module.exports = Product

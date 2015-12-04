@@ -4,15 +4,12 @@ var updateUser = require('./userCtrl').updateUser;
 var q = require('q')
 
 module.exports = {
-  addCart: function () {
+  addCart: function(){
     var dfd = q.defer()
-    var cart = new Cart({
-      products: [],
-      total: 0
-    })
+    var cart = new Cart({products: [], total: 0})
     cart
       .save()
-      .then(function (results) {
+      .then(function(results){
         console.log('Cart save results:', results)
         dfd.resolve(results);
       })
